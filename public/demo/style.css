@@ -4,7 +4,8 @@
   --sage: #7c9a7e;
   --sage-dark: #4f6b52;
   --text: #2f3e33;
-  --muted: #6b7a6e;
+  --muted: #5f6e62;
+  --line-green: #047a35; /* เขียว LINE ที่เข้มขึ้น ตัวหนังสือขาวอ่านง่าย (ต่างกัน 5.5:1) */
 }
 
 * {
@@ -35,10 +36,12 @@ h1, h2, h3, .logo {
   font-size: 22px;
   color: var(--sage-dark);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 nav a {
-  margin-left: 16px;
+  display: inline-block;
+  padding: 10px 8px; /* พื้นที่กดสูงอย่างน้อย 44px */
   color: var(--muted);
   text-decoration: none;
 }
@@ -69,7 +72,7 @@ section {
   display: inline-block;
   margin-top: 24px;
   padding: 14px 28px;
-  background: #06c755;
+  background: var(--line-green);
   color: white;
   border-radius: 999px;
   text-decoration: none;
@@ -133,6 +136,8 @@ footer {
 }
 
 .cart-btn {
+  white-space: nowrap;
+  min-height: 44px;
   border: 1px solid var(--sage);
   background: white;
   color: var(--sage-dark);
@@ -147,8 +152,9 @@ footer {
   margin-top: 8px;
   padding: 10px;
   border: none;
+  min-height: 44px;
   border-radius: 10px;
-  background: var(--sage);
+  background: var(--sage-dark);
   color: white;
   font: inherit;
   font-weight: 600;
@@ -194,8 +200,19 @@ footer {
 }
 
 .cart-note {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
+}
+
+/* จอเล็ก: ซ่อนเมนู เหลือชื่อร้านกับปุ่มตะกร้า ไม่ให้ตกบรรทัด */
+@media (max-width: 599px) {
+  nav {
+    display: none;
+  }
+  .cart-panel {
+    left: 16px;
+    width: auto;
+  }
 }
 
 @media (min-width: 768px) {
