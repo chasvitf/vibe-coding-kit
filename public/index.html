@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>คู่มือ Vibe Coding ฉบับเริ่มต้น · สร้างเว็บแรกด้วย Claude Code</title>
+  <meta name="description" content="เอกสารประกอบคลาส Vibe Coding: ติดตั้ง Claude Code, หลักการสั่ง AI, ชุด prompt 12 อัน, เช็คลิสต์ตรวจงาน และตัวอย่างสร้างเว็บจริงทีละขั้นจนขึ้นออนไลน์">
+  <meta name="theme-color" content="#1f1b16">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="คู่มือ Vibe Coding ฉบับเริ่มต้น">
+  <meta property="og:description" content="สร้างเว็บแรกด้วย Claude Code ตั้งแต่ติดตั้งจนขึ้นออนไลน์ พร้อมชุด prompt และตัวอย่างทีละขั้น">
+  <meta property="og:image" content="https://vibecoding-th.vercel.app/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="kicker">เอกสารประกอบคลาส · ไฟล์เดียวกับที่ผู้เรียนได้รับหลังเรียน</p>
+      <h1>คู่มือ Vibe Coding<br>ฉบับเริ่มต้น</h1>
+      <p class="sub">สร้างเว็บแรกด้วย Claude Code ตั้งแต่ติดตั้งจนขึ้นออนไลน์ ไม่ต้องมีพื้นฐานเขียนโปรแกรม</p>
+      <div class="cta">
+        <a class="btn primary" href="/handout.pdf" download>ดาวน์โหลด PDF</a>
+        <a class="btn" href="/demo/" target="_blank" rel="noopener">ดูเว็บที่ทำในคลาส</a>
+      </div>
+      <nav class="toc" aria-label="สารบัญ">
+        <a href="#setup">1 · เตรียมเครื่อง</a><a href="#rules">2 · หลักการสั่ง AI</a><a href="#prompts">3 · ชุด prompt</a><a href="#class">4 · ตัวอย่างในคลาส</a><a href="#check">5 · เช็คลิสต์</a><a href="#fix">6 · ปัญหาที่เจอบ่อย</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="setup">
+      <h2><span>1</span>เตรียมเครื่อง</h2>
+      <p class="lead">ทำพร้อมกันใน 30 นาทีแรกของคลาส ใช้ได้ทั้ง Mac และ Windows</p>
+      <table class="tools">
+        <thead><tr><th>เครื่องมือ</th><th>ใช้ทำอะไร</th><th>ติดตั้ง</th></tr></thead>
+        <tbody>
+          <tr><td>VS Code</td><td>เปิดดูและแก้ไฟล์</td><td><a href="https://code.visualstudio.com" target="_blank" rel="noopener">code.visualstudio.com</a></td></tr>
+          <tr><td>Git</td><td>เก็บประวัติงาน ย้อนกลับได้</td><td>Mac: <code>xcode-select --install</code><br>Windows: <a href="https://git-scm.com" target="_blank" rel="noopener">git-scm.com</a></td></tr>
+          <tr><td>Node.js (LTS)</td><td>ใช้คำสั่ง <code>npx</code> ตอนขึ้นเว็บ</td><td><a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a></td></tr>
+          <tr><td>Claude Code</td><td>ผู้ช่วยเขียนโค้ดใน Terminal</td><td>ดูคำสั่งด้านล่าง</td></tr>
+        </tbody>
+      </table>
+      <div class="cmds">
+        <p>ติดตั้ง Claude Code (คำสั่งจากเอกสารทางการ)</p>
+        <div class="cmd"><span>Mac / Linux</span><pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre><button class="copy" type="button">คัดลอก</button></div>
+        <div class="cmd"><span>Windows (PowerShell)</span><pre><code>irm https://claude.ai/install.ps1 | iex</code></pre><button class="copy" type="button">คัดลอก</button></div>
+        <p>สร้างโฟลเดอร์งานแล้วเริ่มคุยกับ Claude ครั้งแรกจะให้ล็อกอินบัญชี Claude (แพ็กเกจ Pro ขึ้นไป)</p>
+        <div class="cmd"><span>ทุกเครื่อง</span><pre><code>mkdir my-site && cd my-site && claude</code></pre><button class="copy" type="button">คัดลอก</button></div>
+        <p class="muted">วิธีติดตั้งล่าสุดดูได้ที่ <a href="https://docs.claude.com/en/docs/claude-code/setup" target="_blank" rel="noopener">docs.claude.com</a> · ยังไม่มี Claude Pro เริ่มเรียนด้วย Cursor หรือ ChatGPT แบบฟรีก่อนได้ หลักการเดียวกัน</p>
+      </div>
+    </section>
+
+    <section id="rules">
+      <h2><span>2</span>5 หลักการสั่ง AI ให้ได้งาน</h2>
+      <ol class="rules">
+        <li><b>บอกให้ครบ</b>ทำอะไร ให้ใคร ใช้อะไร และห้ามอะไร เช่น “ใช้ HTML ธรรมดา ไม่ใช้ framework”</li>
+        <li><b>ให้วางแผนก่อนลงมือ</b>ต่อท้ายว่า “ช่วยบอกแผนสั้น ๆ ก่อนเริ่ม” อ่านแผนแล้วค่อยตอบว่า “โอเค ทำเลย”</li>
+        <li><b>ทีละเรื่อง</b>1 prompt = 1 การเปลี่ยนแปลง เปิดเว็บดูผลก่อนสั่งเรื่องต่อไป</li>
+        <li><b>ให้หลักฐาน ไม่ใช่ความรู้สึก</b>วาง error ทั้งข้อความ บอกขนาดจอ บอกว่ากดปุ่มไหนแล้วไม่ทำงาน แทน “มันพัง”</li>
+        <li><b>เซฟงานบ่อย ๆ</b>ผลดีเมื่อไรให้ commit ถ้าการแก้รอบถัดไปทำพัง สั่งย้อนกลับได้ทันที</li>
+      </ol>
+    </section>
+
+    <section id="prompts">
+      <h2><span>3</span>ชุด prompt พร้อมใช้</h2>
+      <p class="lead">คัดลอกไปแก้คำในวงเล็บให้ตรงกับงานของคุณ prompt ที่มี ★ คืออันที่ใช้จริงในตัวอย่างข้อ 4</p>
+      <div class="prompts">
+        <article><h3>เริ่มโปรเจกต์ ★</h3><p class="p">ช่วยสร้างเว็บหน้าเดียวให้ร้านเทียนหอมชื่อ "กลิ่นมายด์" (ร้านสมมติ) ด้วย HTML CSS JavaScript ธรรมดา ไม่ใช้ framework แยกเป็นไฟล์ index.html, style.css, script.js มีส่วน: หัวเว็บพร้อมปุ่มสั่งซื้อทาง LINE, สินค้า 3 อย่างพร้อมราคา, เกี่ยวกับร้าน, ติดต่อ ให้ดูดีบนมือถือก่อน ช่วยบอกแผนสั้น ๆ ก่อนเริ่มเขียน</p><button class="copy" type="button">คัดลอก</button></article>
+        <article><h3>ปรับดีไซน์ ★</h3><p class="p">ปรับโทนสีเป็นครีมกับเขียวเซจ ใช้ฟอนต์ภาษาไทยจาก Google Fonts ที่อ่านง่าย เพิ่มระยะห่างให้ดูโล่งขึ้น และใส่รูปสินค้าเป็นสีพื้นไล่เฉดไปก่อน</p><button class="copy" type="button">คัดลอก</button></article>
+        <article><h3>เพิ่มฟีเจอร์ ★</h3><p class="p">เพิ่มปุ่ม "ใส่ตะกร้า" ใต้สินค้าแต่ละชิ้น นับจำนวนและแสดงยอดรวมที่มุมขวาบน กดดูรายการแล้วส่งสรุปไปทาง LINE ได้ ยังไม่ต้องจ่ายเงินจริง</p><button class="copy" type="button">คัดลอก</button></article>
+        <article><h3>ให้ AI ตรวจงาน ★</h3><p class="p">ตรวจเว็บนี้บนจอมือถือกว้าง 375px ว่ามีอะไรล้น ตัวหนังสือเล็กหรืออ่านยาก หรือปุ่มกดยากไหม แก้ให้ แล้วสรุปว่าแก้อะไรบ้าง</p><button class="copy" type="button">คัดลอก</button></article>
+        <article><h3>SEO และรูปพรีวิว ★</h3><p class="p">ใส่ title, description และรูปพรีวิวเวลาแชร์ลิงก์ใน LINE / Facebook ให้เว็บนี้</p><button class="copy" type="button">คัดลอก</button></article>
+        <article><h3>ขึ้นเว็บ ★</h3><p class="p">เขียน README ภาษาไทยสั้น ๆ แล้วบอกคำสั่งสำหรับอัปขึ้น GitHub และขึ้นเว็บด้วย Vercel ทีละขั้น</p><button class="copy" type="button">คัดลอก</button></article>
+        <article><h3>แก้บั๊ก</h3><p class="p">กดปุ่ม (ชื่อปุ่ม) แล้วไม่เกิดอะไรขึ้น ใน Console ขึ้นว่า: (วาง error ทั้งหมด) ช่วยหาสาเหตุ อธิบายสั้น ๆ แล้วแก้ โดยไม่แก้ส่วนอื่นที่ทำงานอยู่</p><button class="copy" type="button">คัดลอก</button></article>
+        <article><h3>อธิบายโค้ด</h3><p class="p">อธิบายไฟล์ script.js ทีละส่วน เหมือนอธิบายให้คนไม่เคยเขียนโค้ดฟัง แล้วบอกว่าถ้าอยากเพิ่มสินค้าใหม่ต้องแก้ตรงไหน</p><button class="copy" type="button">คัดลอก</button></article>
+        <article><h3>ย้อนกลับเมื่อพัง</h3><p class="p">การแก้ล่าสุดทำให้หน้าเว็บพัง ช่วยย้อนกลับไปเหมือน commit ล่าสุด แล้วลองวิธีใหม่ที่เปลี่ยนน้อยกว่าเดิม</p><button class="copy" type="button">คัดลอก</button></article>
+        <article><h3>เช็คความปลอดภัย</h3><p class="p">ตรวจว่าในโปรเจกต์มีรหัสผ่าน API key หรือข้อมูลส่วนตัวที่ไม่ควรขึ้น GitHub ไหม ถ้ามีให้ย้ายไปไฟล์ .env และใส่ชื่อไฟล์ใน .gitignore</p><button class="copy" type="button">คัดลอก</button></article>
+        <article><h3>ทำให้เร็วขึ้น</h3><p class="p">วัดความเร็วเว็บนี้ด้วย Lighthouse แล้วแก้ 3 จุดที่ได้ผลมากที่สุด บอกคะแนนก่อนและหลังแก้</p><button class="copy" type="button">คัดลอก</button></article>
+        <article><h3>วางแผนงานใหม่</h3><p class="p">ฉันอยากทำเว็บ (อะไร) ให้ (ใคร) ใช้ ช่วยถามคำถามที่จำเป็น 5 ข้อก่อน แล้วสรุปเป็นแผนทำทีละขั้น ขั้นละ 1 prompt</p><button class="copy" type="button">คัดลอก</button></article>
+      </div>
+    </section>
+
+    <section id="class">
+      <h2><span>4</span>ตัวอย่างในคลาส: เว็บร้านเทียนหอมใน 6 prompt</h2>
+      <p class="lead">ทำจริงด้วย Claude Code ตาม prompt ★ ด้านบนทีละขั้น ทุกขั้นถูกเก็บเป็น commit แยก เปิดดูโค้ดของแต่ละขั้นได้ที่
+        <a href="https://github.com/chasvitf/vibe-coding-kit/commits/main/public/demo" target="_blank" rel="noopener">ประวัติใน GitHub</a> · ผลลัพธ์สุดท้าย <a href="/demo/" target="_blank" rel="noopener">เปิดดูเว็บ</a></p>
+      <ol class="steps">
+        <li>
+          <div><h3>สร้างหน้าแรก</h3><p>AI บอกแผน 3 ข้อก่อนเขียน: โครงหน้า 5 ส่วน, CSS เริ่มจากจอมือถือ, สคริปต์เลื่อนหน้าแบบนุ่ม แล้วสร้าง 3 ไฟล์</p><p class="chk">เช็คเอง: กดปุ่มสั่งซื้อทาง LINE แล้วเปิดแอป LINE พร้อมข้อความจริงไหม</p></div>
+          <img src="/steps/1-desktop.jpg" alt="ขั้นที่ 1 หน้าเว็บแรก โทนขาวเรียบ" loading="lazy" width="1280" height="800">
+        </li>
+        <li>
+          <div><h3>ปรับดีไซน์</h3><p>เปลี่ยนเป็นโทนครีมกับเขียวเซจ ฟอนต์ Mitr กับ Noto Sans Thai เพิ่มระยะห่าง และกล่องสีไล่เฉดแทนรูปสินค้า</p><p class="chk">เช็คเอง: ตัวหนังสือบนพื้นสีอ่านง่ายไหม</p></div>
+          <img src="/steps/2-desktop.jpg" alt="ขั้นที่ 2 โทนครีมเขียวเซจ" loading="lazy" width="1280" height="800">
+        </li>
+        <li>
+          <div><h3>เพิ่มตะกร้า</h3><p>ปุ่มใส่ตะกร้าใต้สินค้า ตัวนับและยอดรวมมุมขวาบน กดแล้วเห็นรายการ และปุ่มส่งสรุปเข้า LINE</p><p class="chk">เช็คเอง: ใส่ของ 3 ชิ้น ยอดรวมถูกไหม ข้อความใน LINE ครบไหม (ทดสอบแล้ว: ลาเวนเดอร์ ×2 + วานิลลา ×1 = 900 บาท)</p></div>
+          <img src="/steps/3-desktop.jpg" alt="ขั้นที่ 3 ตะกร้าสินค้าเปิดอยู่ ยอดรวม 900 บาท" loading="lazy" width="1280" height="800">
+        </li>
+        <li>
+          <div><h3>ให้ AI ตรวจบนมือถือ</h3><p>AI เจอ 5 จุดและแก้ทั้งหมด: หัวเว็บแน่นจนชื่อร้านตกบรรทัด, ลิงก์เมนูสูงแค่ 24px กดยาก, ปุ่มเขียว LINE ตัวหนังสือขาวต่างสีแค่ 2.2:1, ปุ่มใส่ตะกร้าสีอ่อนเกินไป, ข้อความใต้ตะกร้า 13px</p><p class="chk">บทเรียน: งานที่ดูดีบนคอม อาจพังบนมือถือ ต้องสั่งตรวจเสมอ</p></div>
+          <div class="pair"><figure><img src="/steps/3-mobile.jpg" alt="ก่อนแก้ ชื่อร้านและปุ่มตะกร้าตกบรรทัด" loading="lazy" width="375" height="812"><figcaption>ก่อน</figcaption></figure><figure><img src="/steps/4-mobile.jpg" alt="หลังแก้ หัวเว็บเรียบร้อย" loading="lazy" width="375" height="812"><figcaption>หลัง</figcaption></figure></div>
+        </li>
+        <li>
+          <div><h3>SEO และรูปพรีวิว</h3><p>เพิ่ม title, description และรูปพรีวิวขนาด 1200×630 เวลาแชร์ลิงก์ใน LINE / Facebook จะขึ้นรูปและชื่อร้าน</p><p class="chk">เช็คเอง: วางลิงก์ในแชท LINE ของตัวเองดูว่ารูปขึ้นไหม</p></div>
+          <img src="/demo/og.jpg" alt="รูปพรีวิวเวลาแชร์ลิงก์" loading="lazy" width="1200" height="630">
+        </li>
+        <li>
+          <div><h3>ขึ้นเว็บออนไลน์</h3><p>AI เขียน README และคำสั่ง GitHub + Vercel ทีละบรรทัด ผู้เรียนพิมพ์ตาม แล้วได้ลิงก์ .vercel.app ส่งให้เพื่อนเปิดได้ทันที</p><p class="chk">ผลลัพธ์: <a href="/demo/" target="_blank" rel="noopener">vibecoding-th.vercel.app/demo</a></p></div>
+          <pre class="code"><code>git add .
+git commit -m "เว็บร้านกลิ่นมายด์"
+git push
+npx vercel --prod</code></pre>
+        </li>
+      </ol>
+    </section>
+
+    <section id="check">
+      <h2><span>5</span>เช็คลิสต์ก่อนเชื่อ AI</h2>
+      <ul class="checklist">
+        <li>เปิดเว็บจริง กดทุกปุ่ม กรอกทุกช่อง</li>
+        <li>ดูบนมือถือ หรือใช้ DevTools จำลองจอกว้าง 375px</li>
+        <li>เปิด Console (F12) ดูว่ามี error สีแดงไหม</li>
+        <li>อ่านสรุปว่า AI แก้ไฟล์ไหนบ้าง แก้เกินกว่าที่สั่งไหม</li>
+        <li>ห้ามวางรหัสผ่านหรือ API key ลงในแชท</li>
+        <li>commit ก่อนสั่งงานใหญ่ทุกครั้ง</li>
+      </ul>
+    </section>
+
+    <section id="fix">
+      <h2><span>6</span>ปัญหาที่เจอบ่อย</h2>
+      <dl class="faq">
+        <dt><code>command not found: claude</code></dt><dd>ปิดแล้วเปิด Terminal ใหม่ ถ้ายังไม่หาย รันคำสั่งติดตั้งอีกครั้ง</dd>
+        <dt>แก้ไฟล์แล้วหน้าเว็บไม่เปลี่ยน</dt><dd>กด Cmd + Shift + R (Mac) หรือ Ctrl + Shift + R (Windows) เพื่อโหลดใหม่แบบล้างแคช</dd>
+        <dt><code>git push</code> ขึ้น rejected</dt><dd>รัน <code>git pull --rebase</code> แล้ว push ใหม่ ถ้ายังไม่ได้ วาง error ให้ Claude ช่วยดู</dd>
+        <dt>AI แก้วนไปวนมาไม่จบ</dt><dd>พิมพ์ <code>/clear</code> เริ่มแชทใหม่ แล้วอธิบายปัญหาให้สั้นและชัด พร้อม error ล่าสุด</dd>
+        <dt>Vercel ขึ้นหน้า 404</dt><dd>ตรวจว่าไฟล์ <code>index.html</code> อยู่ในโฟลเดอร์ที่ deploy ไม่ได้อยู่ในโฟลเดอร์ย่อย</dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="foot wrap">
+    <p>เขียนโดย <a href="https://chanavee.vercel.app" target="_blank" rel="noopener">Chanavee Pimprong</a> ผู้สอนคลาส <a href="https://fastwork.co/user/chasvitf/ai-course-68510198" target="_blank" rel="noopener">Vibe Coding ด้วย Claude Code ตัวต่อตัว บน Fastwork</a> · <a href="https://github.com/chasvitf/vibe-coding-kit" target="_blank" rel="noopener">ซอร์สของคู่มือนี้</a></p>
+    <p class="muted">ร้านกลิ่นมายด์เป็นร้านสมมติสำหรับสอน · Claude และ Claude Code เป็นเครื่องหมายการค้าของ Anthropic คู่มือนี้ไม่ได้ทำร่วมกับ Anthropic</p>
+  </footer>
+
+  <script>
+    // ปุ่มคัดลอก: คัดลอกข้อความ prompt หรือคำสั่งที่อยู่ในกล่องเดียวกัน
+    document.querySelectorAll(".copy").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const box = btn.closest("article, .cmd");
+        const text = (box.querySelector(".p, code").textContent || "").trim();
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.textContent = "คัดลอกแล้ว";
+        } catch {
+          btn.textContent = "คัดลอกไม่ได้";
+        }
+        setTimeout(() => (btn.textContent = "คัดลอก"), 1500);
+      });
+    });
+  </script>
+</body>
+</html>
