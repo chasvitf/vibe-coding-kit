@@ -17,7 +17,16 @@
       <a href="#about">เกี่ยวกับเรา</a>
       <a href="#contact">ติดต่อ</a>
     </nav>
+    <button class="cart-btn" id="cart-btn">ตะกร้า <span id="cart-count">0</span> · ฿<span id="cart-total">0</span></button>
   </header>
+
+  <aside class="cart-panel" id="cart-panel" hidden>
+    <h3>ตะกร้าของคุณ</h3>
+    <ul id="cart-items"></ul>
+    <p class="cart-sum">รวม ฿<span id="cart-sum">0</span></p>
+    <a class="btn-line" id="send-line" href="#" target="_blank" rel="noopener">ส่งรายการทาง LINE</a>
+    <p class="cart-note">ยังไม่มีการจ่ายเงินบนเว็บ ร้านจะตอบกลับเพื่อยืนยันทาง LINE</p>
+  </aside>
 
   <section class="hero">
     <h1>เทียนหอมทำมือ<br>จากถั่วเหลืองธรรมชาติ</h1>
@@ -28,23 +37,26 @@
   <section id="products" class="products">
     <h2>สินค้า</h2>
     <div class="product-list">
-      <div class="product">
+      <div class="product" data-name="ลาเวนเดอร์" data-price="290">
         <div class="product-img lavender"></div>
         <h3>ลาเวนเดอร์</h3>
         <p>กลิ่นหอมนุ่ม ช่วยให้หลับสบาย</p>
         <p class="price">฿290</p>
+        <button class="add-btn">ใส่ตะกร้า</button>
       </div>
-      <div class="product">
+      <div class="product" data-name="ตะไคร้หอม" data-price="250">
         <div class="product-img lemongrass"></div>
         <h3>ตะไคร้หอม</h3>
         <p>สดชื่น ไล่ยุงได้ด้วย</p>
         <p class="price">฿250</p>
+        <button class="add-btn">ใส่ตะกร้า</button>
       </div>
-      <div class="product">
+      <div class="product" data-name="วานิลลา" data-price="320">
         <div class="product-img vanilla"></div>
         <h3>วานิลลา</h3>
         <p>หวานอบอุ่น เหมาะกับห้องนั่งเล่น</p>
         <p class="price">฿320</p>
+        <button class="add-btn">ใส่ตะกร้า</button>
       </div>
     </div>
   </section>

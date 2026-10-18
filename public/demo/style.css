@@ -132,6 +132,72 @@ footer {
   border-top: 1px solid var(--cream-dark);
 }
 
+.cart-btn {
+  border: 1px solid var(--sage);
+  background: white;
+  color: var(--sage-dark);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.add-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: var(--sage);
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-btn:active {
+  transform: scale(0.98);
+}
+
+.cart-panel {
+  position: fixed;
+  top: 72px;
+  right: 16px;
+  width: 300px;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 12px 40px rgba(47, 62, 51, 0.18);
+  z-index: 10;
+}
+
+.cart-panel h3 {
+  margin: 0 0 12px;
+}
+
+.cart-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cart-panel li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--cream-dark);
+}
+
+.cart-sum {
+  font-weight: 600;
+  text-align: right;
+}
+
+.cart-note {
+  font-size: 13px;
+  color: var(--muted);
+}
+
 @media (min-width: 768px) {
   .product-list {
     grid-template-columns: repeat(3, 1fr);
